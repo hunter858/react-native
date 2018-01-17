@@ -15,7 +15,6 @@ import {
 } from 'react-native';
 
 
-// import Home  from '.main/Home';
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
@@ -29,12 +28,30 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+
+// 创建一个class 对象
+ class Greeting extends Component{
+   render(){
+     return(
+       <Text>{this.props.name}</Text>
+     )
+   }
+ }
+
+
+
 export default class App extends Component<{}> {
 
 
   render() {
     return (
       <View style={styles.container}>
+
+        <View style={styles.showTop}>
+            <Greeting name='测试一下自己封装的-控件'/>
+            <Greeting name='能显示出来吗'/>
+            <Greeting name='卧槽可以吗'/>
+        </View>
         <TabBarIOS
           style={{height:49,width:ScreenWidth}}
           tintColor="green" //被选中的标签的颜色
@@ -72,6 +89,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  showTop:{
+    width:ScreenWidth,
+    height:100,
+    marginTop:20,
+    backgroundColor:'#F5FCF0',
   },
   instructions: {
     textAlign: 'center',
