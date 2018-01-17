@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
   TabBarIOS,
   Dimensions,
 } from 'react-native';
@@ -47,11 +48,25 @@ export default class App extends Component<{}> {
     return (
       <View style={styles.container}>
 
-        <View style={styles.showTop}>
-            <Greeting name='测试一下自己封装的-控件'/>
-            <Greeting name='能显示出来吗'/>
-            <Greeting name='卧槽可以吗'/>
-        </View>
+            <View style={styles.showTop}>
+                <Greeting name='测试一下自己封装的-控件'/>
+                <Greeting name='能显示出来吗'/>
+                <Greeting name='卧槽可以吗'/>
+            </View>
+            <View style={styles.showTopA}>
+                <View style={styles.showTopAItem}></View>
+                <View style={styles.showTopAItem}></View>
+                <View style={styles.showTopAItem}></View>
+            </View>
+            <View style={styles.showTopB}>
+              <TextInput
+                style={{height:40}}
+                placeholder="Type here to translate!"
+                onChangeText={(text) => this.setState({text})}
+              />
+            </View>
+            <View style={styles.showTopC}></View>
+
         <TabBarIOS
           style={{height:49,width:ScreenWidth}}
           tintColor="green" //被选中的标签的颜色
@@ -81,9 +96,9 @@ export default class App extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -95,6 +110,29 @@ const styles = StyleSheet.create({
     height:100,
     marginTop:20,
     backgroundColor:'#F5FCF0',
+  },
+  showTopA:{
+    flex:1,
+    backgroundColor:'powderblue',
+    flexDirection: 'row',//行
+    // flexDirection: 'column',//竖着展示
+    justifyContent:'space-between',//均分分布---center  居中显示，设置的margin 起作用
+    alignItems: 'center',
+  },
+  showTopAItem:{
+    width:50,
+    height:50,
+    margin:5,
+
+    backgroundColor: 'white',
+  },
+  showTopB:{
+    flex:2,
+    backgroundColor:'steelblue',
+  },
+  showTopC:{
+    flex:3,
+    backgroundColor:'red',
   },
   instructions: {
     textAlign: 'center',
