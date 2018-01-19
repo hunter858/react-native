@@ -13,10 +13,12 @@ import {
   TextInput,
   TabBarIOS,
   Dimensions,
+  ScrollView,
+  Image,
 } from 'react-native';
 
 
-
+import Bananas from './main/Bananas.js';
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
 const ScreenScale = Dimensions.get('window').scale;//比例
@@ -65,7 +67,15 @@ export default class App extends Component<{}> {
                 onChangeText={(text) => this.setState({text})}
               />
             </View>
-            <View style={styles.showTopC}></View>
+            <View style={styles.showTopC}>
+              <ScrollView style={styles.scrollview}>
+                <Image style={styles.itemImage} source={require('./img/cat.png')} />
+                <Image style={styles.itemImage} source={require('./img/dog.png')} />
+                <Image style={styles.itemImage} source={require('./img/dog2.png')} />
+                <Image  style={styles.itemImage} source={require('./img/girl.png')} />
+              </ScrollView>
+              <Bananas />
+            </View>
 
         <TabBarIOS
           style={{height:49,width:ScreenWidth}}
@@ -105,11 +115,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  itemImage:{
+    height:100,
+    width:100,
+  },
   showTop:{
     width:ScreenWidth,
     height:100,
     marginTop:20,
     backgroundColor:'#F5FCF0',
+  },
+  scrollview:{
+    flexDirection:'row',
   },
   showTopA:{
     flex:1,
