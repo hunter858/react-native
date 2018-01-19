@@ -19,6 +19,12 @@ import {
 
 
 import Bananas from './main/Bananas.js';
+import TopView from './main/TopView.js';
+import SecondView from './main/SecondView.js';
+import TopViewB from './main/TopViewB.js';
+import TopViewC from './main/TopViewC.js';
+
+
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
 const ScreenScale = Dimensions.get('window').scale;//比例
@@ -32,14 +38,7 @@ const instructions = Platform.select({
 });
 
 
-// 创建一个class 对象
- class Greeting extends Component{
-   render(){
-     return(
-       <Text>{this.props.name}</Text>
-     )
-   }
- }
+
 
 
 
@@ -49,33 +48,12 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
+            <TopView />
+            <SecondView />
+            <TopViewB />
+            <Bananas />
+            <TopViewC />
 
-            <View style={styles.showTop}>
-                <Greeting name='测试一下自己封装的-控件'/>
-                <Greeting name='能显示出来吗'/>
-                <Greeting name='卧槽可以吗'/>
-            </View>
-            <View style={styles.showTopA}>
-                <View style={styles.showTopAItem}></View>
-                <View style={styles.showTopAItem}></View>
-                <View style={styles.showTopAItem}></View>
-            </View>
-            <View style={styles.showTopB}>
-              <TextInput
-                style={{height:40}}
-                placeholder="Type here to translate!"
-                onChangeText={(text) => this.setState({text})}
-              />
-            </View>
-            <View style={styles.showTopC}>
-              <ScrollView style={styles.scrollview}>
-                <Image style={styles.itemImage} source={require('./img/cat.png')} />
-                <Image style={styles.itemImage} source={require('./img/dog.png')} />
-                <Image style={styles.itemImage} source={require('./img/dog2.png')} />
-                <Image  style={styles.itemImage} source={require('./img/girl.png')} />
-              </ScrollView>
-              <Bananas />
-            </View>
 
         <TabBarIOS
           style={{height:49,width:ScreenWidth}}
@@ -127,25 +105,6 @@ const styles = StyleSheet.create({
   },
   scrollview:{
     flexDirection:'row',
-  },
-  showTopA:{
-    flex:1,
-    backgroundColor:'powderblue',
-    flexDirection: 'row',//行
-    // flexDirection: 'column',//竖着展示
-    justifyContent:'space-between',//均分分布---center  居中显示，设置的margin 起作用
-    alignItems: 'center',
-  },
-  showTopAItem:{
-    width:50,
-    height:50,
-    margin:5,
-
-    backgroundColor: 'white',
-  },
-  showTopB:{
-    flex:2,
-    backgroundColor:'steelblue',
   },
   showTopC:{
     flex:3,
