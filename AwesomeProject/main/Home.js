@@ -43,6 +43,21 @@ const instructions = Platform.select({
 
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    // 初始状态
+    this.state = {
+        selectedTab:2 //,     // 首选页面
+        // isHiddenTabBar:false,   // 是否隐藏tabBar
+        // cnbadgeText:'',         // 首页Item角标文本
+        // usbadgeText:''          // 海淘Item角标文本
+    };
+  }
+
+
+
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -70,17 +85,22 @@ export default class Home extends Component {
               //icon={require('.image!home')} //自定义图标- 目前只支持本地图片
               //selectedIcon={require('image!baker')} //自定义高亮图标
               /*下面歇一些 点击select 的动作*/
+              onPress={() => {this.setState({selectedTabItem:0})}}
+              selected={this.state.selectedTabItem == 0}
               >
                 <View  style={[styles.childView,{backgroundColor:'yellow'}]}></View>
 
             </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="contacts"    >
+            <TabBarIOS.Item systemIcon="contacts"    onPress={() => {this.setState({selectedTabItem:1})}}
+                            selected={this.state.selectedTabItem == 1}>
                 <View  style={[styles.childView,{backgroundColor:'red'}]} ></View>
             </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="downloads"   >
+            <TabBarIOS.Item systemIcon="downloads"   onPress={() => {this.setState({selectedTabItem:2})}}
+                            selected={this.state.selectedTabItem == 2} >
                 <View  style={[styles.childView,{backgroundColor:'gray'}]} ></View>
             </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="favorites"   >
+            <TabBarIOS.Item systemIcon="favorites"    onPress={() => {this.setState({selectedTabItem:3})}}
+                            selected={this.state.selectedTabItem == 3}>
                 <View style={[styles.childView,{backgroundColor:'blue'}]} ></View>
             </TabBarIOS.Item>
         </TabBarIOS>
@@ -105,7 +125,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
   },
   childView:{
-
+    flex:1,
   },
   instructions: {
     textAlign: 'center',
