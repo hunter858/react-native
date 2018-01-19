@@ -22,9 +22,9 @@ import  {
            horizontal={true} //水平显示
            scrollEnabled={true} //允许滚动
            pagingEnabled={true} //显示滚动条
-           > 
+           >
 
-            <Image style={styles.itemImage} source={require('../img/cat.png')} />
+            <Image style={styles.itemImage} source={require('../img/timg.gif')} />
             <Image style={styles.itemImage} source={require('../img/dog.png')} />
             <Image style={styles.itemImage} source={require('../img/dog2.png')} />
             <Image  style={styles.itemImage} source={require('../img/girl.png')} />

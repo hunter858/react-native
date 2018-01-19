@@ -18,12 +18,8 @@ import {
 } from 'react-native';
 
 
-import Bananas from './main/Bananas.js';
-import TopView from './main/TopView.js';
-import SecondView from './main/SecondView.js';
-import TopViewB from './main/TopViewB.js';
-import TopViewC from './main/TopViewC.js';
 
+import Home from './main/Home.js';
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
@@ -47,36 +43,7 @@ export default class App extends Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
-            <TopView />
-            <SecondView />
-            <TopViewB />
-            <Bananas />
-            <TopViewC />
-
-
-        <TabBarIOS
-          style={{height:49,width:ScreenWidth}}
-          tintColor="green" //被选中的标签的颜色
-          barTintColor="black" //tabbarIOS 背景色
-          translucent={false}     // TabBarIOS不需要半透明效果
-          >
-            <TabBarIOS.Item
-              systemIcon="bookmarks"
-              badge="15"
-              title="首页"  //如果是系统图标，则标题不会出现
-              //icon={require('.image!home')} //自定义图标- 目前只支持本地图片
-              //selectedIcon={require('image!baker')} //自定义高亮图标
-              >
-            </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="contacts">
-            </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="downloads">
-            </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="favorites">
-            </TabBarIOS.Item>
-        </TabBarIOS>
-      </View>
+        <Home  style={styles.container}/>
     );
   }
 }
@@ -87,6 +54,9 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // alignItems: 'center',
     // backgroundColor: '#F5FCFF',
+  },
+  MainView:{
+    flex:1,
   },
   welcome: {
     fontSize: 20,
