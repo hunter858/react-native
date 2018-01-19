@@ -24,6 +24,10 @@ import SecondView from './SecondView.js';
 import TopViewB from './TopViewB.js';
 import TopViewC from './TopViewC.js';
 
+import Destion from './Destion.js';
+import Account from './Account.js';
+import Message from './Message.js';
+
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
@@ -93,15 +97,15 @@ export default class Home extends Component {
             </TabBarIOS.Item>
             <TabBarIOS.Item systemIcon="contacts"    onPress={() => {this.setState({selectedTabItem:1})}}
                             selected={this.state.selectedTabItem == 1}>
-                <View  style={[styles.childView,{backgroundColor:'red'}]} ></View>
+              <Destion />
             </TabBarIOS.Item>
             <TabBarIOS.Item systemIcon="downloads"   onPress={() => {this.setState({selectedTabItem:2})}}
                             selected={this.state.selectedTabItem == 2} >
-                <View  style={[styles.childView,{backgroundColor:'gray'}]} ></View>
+              <Message />
             </TabBarIOS.Item>
             <TabBarIOS.Item systemIcon="favorites"    onPress={() => {this.setState({selectedTabItem:3})}}
                             selected={this.state.selectedTabItem == 3}>
-                <View style={[styles.childView,{backgroundColor:'blue'}]} ></View>
+              <Account />
             </TabBarIOS.Item>
         </TabBarIOS>
       </View>
