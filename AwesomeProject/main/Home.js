@@ -20,9 +20,7 @@ import {
 
 import Bananas from './Bananas.js';
 // import TopView from './main/TopView.js';
-import SecondView from './SecondView.js';
-import TopViewB from './TopViewB.js';
-import TopViewC from './TopViewC.js';
+
 
 import Destion from './Destion.js';
 import Account from './Account.js';
