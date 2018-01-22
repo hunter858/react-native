@@ -28,7 +28,8 @@ import  {
        rowHasChanged:(r1,r2) => r1!== r2
      });
      this.state = {
-       dataSource: ds.cloneWithRows([])
+       dataSource: ds.cloneWithRows([]),
+       loaded:false
      };
      this.getDataFormServer();
 
@@ -45,7 +46,7 @@ import  {
               <Text> {model.title}</Text>
               <Text> collect_count:{model.collect_count}</Text>
               <Text> {model.year}</Text>
-            <Text> {model.images.large}</Text>
+            {/* <Text> {model.images.large}</Text> */}
           </View>
       </View>
     );
@@ -55,6 +56,8 @@ import  {
     this.getDataFormServer();
   }
 
+
+  /*获取网络请求方法*/
   getDataFormServer(){
 
     const ds = new ListView.DataSource({
@@ -68,7 +71,8 @@ import  {
 
       /*请求成功 处理数据*/
       this.setState({
-       dataSource: ds.cloneWithRows(responseData.subjects)
+       dataSource: ds.cloneWithRows(responseData.subjects),
+       loaded:true
       })
     })
     .catch((error) =>{
@@ -78,6 +82,19 @@ import  {
 
   }
    render() {
+
+      /* 返回正在加载的属性 */
+     if (!this.state.loaded) {
+       return (
+         <View style={styles.conatiner}>
+           <Text style={styles.loading}>加载中...</Text>
+         </View>
+
+       );
+     }
+
+
+
      return (
        <View style={styles.backView}>
          <Text style={styles.Title}>目的地</Text>
@@ -112,21 +129,25 @@ import  {
 
 
  const styles = StyleSheet.create({
+   conatiner:{
+    flex:1,
+   },
    backView:{
      flex:1,
+     marginTop:29,
      backgroundColor:'white',
+   },
+   loading:{
+     fontSize:24,
+     textAlign: 'center',
+     margin: 10,
+     marginTop:150,
    },
    Title:{
      textAlign:'center',
      fontSize:20,
      margin:10,
      marginTop:20,
-   },
-   showImage:{
-     width:60,
-     height:100,
-     margin:5,
-     // backgroundColor:'red',
    },
    CarCell:{
      height:100,
@@ -136,9 +157,14 @@ import  {
      borderBottomColor:'gray',
    },
    ImageView:{
-     width:99,
-     height:138,
-     margin:6,
+     width:90,
+     height:100,
+
+   },
+   showImage:{
+     flex:1,
+     margin:5,
+     // backgroundColor:'red',
    },
  });
  module.exports = Destion;
