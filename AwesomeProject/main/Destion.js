@@ -7,6 +7,7 @@ import  {
   StyleSheet,
   ListView,
   Image,
+  ActivityIndicator,
  }from 'react-native';
 
 
@@ -87,7 +88,12 @@ import  {
      if (!this.state.loaded) {
        return (
          <View style={styles.conatiner}>
-           <Text style={styles.loading}>加载中...</Text>
+
+           <ActivityIndicator
+              // animating={this.state.animating}
+              style={[styles.centering, {height: 80}]}
+              size="large"
+            />
          </View>
 
        );
@@ -135,7 +141,12 @@ import  {
    backView:{
      flex:1,
      marginTop:29,
-     backgroundColor:'white',
+     backgroundColor:'lightgray',
+   },
+   centering:{
+     flex:1,
+     alignItems:'center',
+     justifyContent:'center',
    },
    loading:{
      fontSize:24,
@@ -150,7 +161,7 @@ import  {
      marginTop:20,
    },
    CarCell:{
-     height:100,
+     height:120,
      alignItems:'center',
      flexDirection:'row',
      borderBottomWidth:0.5,
@@ -164,6 +175,7 @@ import  {
    showImage:{
      flex:1,
      margin:5,
+     marginLeft:10,
      // backgroundColor:'red',
    },
  });
