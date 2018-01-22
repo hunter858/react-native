@@ -25,6 +25,7 @@ import Bananas from './Bananas.js';
 import Destion from './Destion.js';
 import Account from './Account.js';
 import Message from './Message.js';
+import Feature from './Feature.js';
 import Icons from '../Assets/Icons.js';
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
@@ -92,7 +93,7 @@ export default class Home extends Component {
               onPress={() => {this.setState({selectedTabItem:0})}}
               selected={this.state.selectedTabItem == 0}
               >
-                <View  style={[styles.childView,{backgroundColor:'yellow'}]}></View>
+                <Feature />
 
             </TabBarIOS.Item>
             <TabBarIOS.Item   icon ={{uri:Icons.search,scale:4.6}} title="搜索"   onPress={() => {this.setState({selectedTabItem:1})}}
