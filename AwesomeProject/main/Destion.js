@@ -8,6 +8,7 @@ import  {
   ListView,
   Image,
   ActivityIndicator,
+  TouchableHighlight,
  }from 'react-native';
 
 
@@ -39,17 +40,24 @@ import  {
 
   renderCell(model){
     return(
-      <View style={styles.CarCell}>
-          <View style={styles.ImageView}>
-              <Image  style={styles.showImage} source ={{uri:model.images.large}} />
-          </View>
-          <View style={styles.movieContent}>
-              <Text> {model.title}</Text>
-              <Text> collect_count:{model.collect_count}</Text>
-              <Text> {model.year}</Text>
-            {/* <Text> {model.images.large}</Text> */}
-          </View>
-      </View>
+      <TouchableHighlight
+        underlayColor="rgba(34,26,38,0.1)"
+        onPress ={() => {
+          console.log('<<' + model.title  + '>> 被点击了');
+        }}
+        >
+            <View style={styles.CarCell}>
+                <View style={styles.ImageView}>
+                    <Image  style={styles.showImage} source ={{uri:model.images.large}} />
+                </View>
+                <View style={styles.movieContent}>
+                    <Text style={styles.titleLabel}> {model.title}   </Text>
+                    <Text> collect_count:{model.collect_count}</Text>
+                    <Text> {model.year}</Text>
+                  {/* <Text> {model.images.large}</ext> */}
+                </View>
+            </View>
+    </TouchableHighlight>
     );
   }
   /*  */
@@ -141,7 +149,8 @@ import  {
    backView:{
      flex:1,
      marginTop:29,
-     backgroundColor:'lightgray',
+     // backgroundColor:'#ECC0B7',
+    backgroundColor:'#F5FCF0',
    },
    centering:{
      flex:1,
@@ -160,22 +169,33 @@ import  {
      margin:10,
      marginTop:20,
    },
+   movieContent:{
+     marginTop:10,
+     marginBottom:10,
+   },
+   titleLabel:{
+     fontSize:22,
+     marginTop:10,
+
+   },
    CarCell:{
-     height:120,
+     height:150,
      alignItems:'center',
      flexDirection:'row',
      borderBottomWidth:0.5,
      borderBottomColor:'gray',
+     borderColor:'rgba(100,53,201,0.1)',
+     paddingTop:6,
    },
    ImageView:{
-     width:90,
-     height:100,
+     margin:5,
+     marginLeft:10,
+     height:130,
+     width:100,
 
    },
    showImage:{
      flex:1,
-     margin:5,
-     marginLeft:10,
      // backgroundColor:'red',
    },
  });
