@@ -25,7 +25,7 @@ import Bananas from './Bananas.js';
 import Destion from './Destion.js';
 import Account from './Account.js';
 import Message from './Message.js';
-
+import Icons from '../Assets/Icons.js';
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
@@ -81,7 +81,9 @@ export default class Home extends Component {
           translucent={false}     // TabBarIOS不需要半透明效果
           >
             <TabBarIOS.Item
-              systemIcon="bookmarks"
+              // systemIcon="bookmarks"
+              icon ={{uri:Icons.home,scale:4.6}}
+              selectedIcon = {{uri:Icons.homeActive,scale:4.6}}
               badge="15"
               title="首页"  //如果是系统图标，则标题不会出现
               //icon={require('.image!home')} //自定义图标- 目前只支持本地图片
@@ -93,15 +95,15 @@ export default class Home extends Component {
                 <View  style={[styles.childView,{backgroundColor:'yellow'}]}></View>
 
             </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="contacts"    onPress={() => {this.setState({selectedTabItem:1})}}
+            <TabBarIOS.Item   icon ={{uri:Icons.search,scale:4.6}} title="搜索"   onPress={() => {this.setState({selectedTabItem:1})}}
                             selected={this.state.selectedTabItem == 1}>
               <Destion />
             </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="downloads"   onPress={() => {this.setState({selectedTabItem:2})}}
+            <TabBarIOS.Item   icon ={{uri:Icons.message,scale:4.6}} title="消息"  onPress={() => {this.setState({selectedTabItem:2})}}
                             selected={this.state.selectedTabItem == 2} >
               <Message />
             </TabBarIOS.Item>
-            <TabBarIOS.Item systemIcon="favorites"    onPress={() => {this.setState({selectedTabItem:3})}}
+            <TabBarIOS.Item   icon ={{uri:Icons.avator,scale:4.6}} title="个人中心"   onPress={() => {this.setState({selectedTabItem:3})}}
                             selected={this.state.selectedTabItem == 3}>
               <Account />
             </TabBarIOS.Item>
