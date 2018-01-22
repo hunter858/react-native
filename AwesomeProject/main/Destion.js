@@ -29,15 +29,22 @@ import  {
      });
      this.state = {
        dataSource: ds.cloneWithRows([
-       {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
-       {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
+       {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
+       {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
        {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
              ])
          };
 
    }
 
-
+  renderCell(model){
+    return(
+      <View style={styles.CarCell}>
+        <Image  style={styles.showImage} source ={{uri:model.logo}} />
+      <Text> {model.name}</Text>
+      </View>
+    );
+  }
 
 
    render() {
@@ -48,7 +55,7 @@ import  {
          <ListView
          showsVerticalScrollIndicator={false}
          dataSource={this.state.dataSource}
-         renderRow={(rowData,rowId) => <CarCell source={{uri:rowData.logo,title:rowId}} />}
+         renderRow={this.renderCell.bind(this)}
         />
        </View>
      );
@@ -65,7 +72,7 @@ import  {
      return(
        <View style={styles.CarCell}>
          <Image  style={styles.showImage} source ={{uri:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'}} />
-       <Text> xxxx{this.props.rowId}</Text>
+       <Text> xxxx{this.props.name}</Text>
        </View>
      );
    }
