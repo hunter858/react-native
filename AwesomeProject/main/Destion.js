@@ -29,9 +29,9 @@ import  {
      });
      this.state = {
        dataSource: ds.cloneWithRows([
-       {logo:'http://upload.jianshu.io/users/upload_avatars/2781235/52637b2553b5.PNG?imageMogr/thumbnail/90x90/quality/100',name:"Demon404"},
-       {logo:'http://upload.jianshu.io/users/upload_avatars/2781235/52637b2553b5.PNG?imageMogr/thumbnail/90x90/quality/100',name:"Demon404"},
-       {logo:'http://upload.jianshu.io/users/upload_avatars/2781235/52637b2553b5.PNG?imageMogr/thumbnail/90x90/quality/100',name:"Demon404"},
+       {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
+       {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
+       {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
              ])
          };
 
@@ -48,7 +48,7 @@ import  {
          <ListView
          showsVerticalScrollIndicator={false}
          dataSource={this.state.dataSource}
-         renderRow={(rowData,rowId) => <CarCell source={{uri:rowData.logo,title:rowData.name}} />}
+         renderRow={(rowData,rowId) => <CarCell source={{uri:rowData.logo,title:rowId}} />}
         />
        </View>
      );
@@ -64,8 +64,8 @@ import  {
      // console(this.props);
      return(
        <View style={styles.CarCell}>
-         <Image  style={styles.showImage}source ={this.props.uri} />
-       <Text>{this.props.title}</Text>
+         <Image  style={styles.showImage} source ={{uri:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'}} />
+       <Text> xxxx{this.props.rowId}</Text>
        </View>
      );
    }
@@ -90,7 +90,7 @@ import  {
      width:40,
      height:40,
      margin:5,
-     backgroundColor:'red',
+     // backgroundColor:'red',
    },
    CarCell:{
      height:64,
