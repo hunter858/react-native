@@ -27,21 +27,21 @@ import  {
      const ds = new ListView.DataSource({
        rowHasChanged:(r1,r2) => r1!== r2
      });
-     // this.state = {
-     //   dataSource: ds.cloneWithRows([
-     //   {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
-     //   {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
-     //   {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
-     //   {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
-     //   {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
-     //   {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
-     //   {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
-     //         ])
-     // };
-
      this.state = {
-       dataSource: ds.cloneWithRows(movieData.subjects)
+       dataSource: ds.cloneWithRows([
+       // {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
+       // {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
+       // {logo:'https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png',name:"Demon404"},
+       // {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
+       // {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
+       // {logo:'https://upload.jianshu.io/users/upload_avatars/1716313/17687250-c3ed-4c5d-8652-06bfe2edc8c6.png?imageMogr2/auto-orient/strip|imageView2/1/w/120/h/120',name:"用户1"},
+       // {logo:'https://upload.jianshu.io/users/upload_avatars/8820266/c97456eb-fefe-40b1-a2c6-578bfb728a57?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',name:"用户2"},
+             ])
      };
+     this.getDataFormServer();
+     // this.state = {
+     //   dataSource: ds.cloneWithRows(movieData.subjects)
+     // };
 
    }
 
@@ -67,13 +67,18 @@ import  {
 
   getDataFormServer(){
 
+    const ds = new ListView.DataSource({
+      rowHasChanged:(r1,r2) => r1!== r2
+    });
+
+
     fetch('https://api.douban.com/v2/movie/top250')
     .then((response) => response.json())
-    .then((responseText) =>{
-      console.log(responseText);
+    .then((responseData) =>{
+
       /*请求成功 处理数据*/
       this.setState({
-
+       dataSource: ds.cloneWithRows(responseData.subjects)
       })
     })
     .catch((error) =>{
@@ -140,6 +145,11 @@ import  {
      flexDirection:'row',
      borderBottomWidth:0.5,
      borderBottomColor:'gray',
+   },
+   ImageView:{
+     width:99,
+     height:138,
+     margin:6,
    },
  });
  module.exports = Destion;
