@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 
 import Destion  from './Destion.js';
+import MovieList from './MovieList.js';
+
 export default class Feature extends Component {
     render(){
       return(
@@ -18,9 +20,13 @@ export default class Feature extends Component {
           style={styles.conatiner}
           initialRoute={{
           title:'推荐电影',
-          component: Destion
+          component: MovieList
           }}
-        />
+          shadowHidden= "true"
+          barTintColor = "darkslateblue"
+          titleTextColor="white"
+          translucent="true"
+        ></NavigatorIOS>
       );
     }
 }
