@@ -10,23 +10,27 @@ import {
   Image,
 } from 'react-native';
 
-import Destion  from './Destion.js';
 import MovieList from './MovieList.js';
+import TopView from './TopView.js';
+
+
+
+
 
 export default class Feature extends Component {
     render(){
       return(
         <NavigatorIOS
-          style={styles.conatiner}
+          // style={styles.conatiner}
           initialRoute={{
           title:'推荐电影',
           component: MovieList
           }}
-          shadowHidden= "true"
+          // shadowHidden= "true"
           barTintColor = "darkslateblue"
           titleTextColor="white"
-          translucent="true"
-        ></NavigatorIOS>
+          style={{flex: 1}}
+        />
       );
     }
 }
@@ -34,6 +38,8 @@ export default class Feature extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:100,
+    height:100,
     // justifyContent: 'center',
     // alignItems: 'center',
     // backgroundColor: '#F5FCFF',
