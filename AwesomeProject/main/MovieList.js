@@ -31,10 +31,20 @@ import  {
      const ds = new ListView.DataSource({
        rowHasChanged:(r1,r2) => r1!== r2
      });
-     this.state = {
-       dataSource: ds.cloneWithRows([]),
-       loaded:false
-     };
+
+     if (this.props.results) {
+         this.state = {
+           dataSource: ds.cloneWithRows(this.props.results),
+           loaded:false
+         };
+     }else{
+         this.state = {
+           dataSource: ds.cloneWithRows([]),
+           loaded:false
+         };
+     }
+
+
      this.getDataFormServer();
 
 
@@ -70,6 +80,10 @@ import  {
   }
   /*  */
   componentDidMount(){
+
+    if (this.props.results) {
+      return;
+    }
     this.getDataFormServer();
   }
 

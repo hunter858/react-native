@@ -15,6 +15,7 @@ import {
   Dimensions,
   ScrollView,
   Image,
+  NavigatorIOS,
 } from 'react-native';
 
 
@@ -26,6 +27,7 @@ import Destion from './Destion.js';
 import Account from './Account.js';
 import Message from './Message.js';
 import Feature from './Feature.js';
+import Search from './Search.js';
 import Icons from '../Assets/Icons.js';
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
@@ -66,15 +68,6 @@ export default class Main extends Component {
       <View style={styles.container}>
 
 
-
-
-        {/* <TopView />
-        <SecondView />
-        <TopViewB />
-        <Bananas />
-        <TopViewC /> */}
-
-
         <TabBarIOS
           style={{height:49,width:ScreenWidth}}
           tintColor="green" //被选中的标签的颜色
@@ -98,7 +91,20 @@ export default class Main extends Component {
             </TabBarIOS.Item>
             <TabBarIOS.Item   icon ={{uri:Icons.search,scale:4.6}} title="搜索"   onPress={() => {this.setState({selectedTabItem:1})}}
                             selected={this.state.selectedTabItem == 1}>
-              <Destion />
+              {/* <Destion /> */}
+
+              <NavigatorIOS
+                // style={styles.conatiner}
+                initialRoute={{
+                title:'搜索',
+                component: Search
+                }}
+                // shadowHidden= "true"
+                barTintColor = "darkslateblue"
+                titleTextColor="white"
+                style={{flex: 1}}
+              />
+
             </TabBarIOS.Item>
             <TabBarIOS.Item   icon ={{uri:Icons.message,scale:4.6}} title="消息"  onPress={() => {this.setState({selectedTabItem:2})}}
                             selected={this.state.selectedTabItem == 2} >
