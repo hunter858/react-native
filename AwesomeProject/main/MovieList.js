@@ -13,10 +13,12 @@ import  {
 
 
  // import movieData from '.Wine.json';
- let movieData = require('./Wine.json');
- const ScreenWidth = Dimensions.get('window').width; //屏幕宽
- const ScreenHeight = Dimensions.get('window').height; //高
- const ScreenScale = Dimensions.get('window').scale;//比例
+  let movieData = require('./Wine.json');
+  import MovieDetail from './MovieDetail.js';
+
+  const ScreenWidth = Dimensions.get('window').width; //屏幕宽
+  const ScreenHeight = Dimensions.get('window').height; //高
+  const ScreenScale = Dimensions.get('window').scale;//比例
 
 
 
@@ -38,13 +40,20 @@ import  {
 
    }
 
+  showMovieDetail(movie){
+    console.log(movie);
+    this.props.navigator.push({
+      title:movie.title,
+      component:MovieDetail,
+      passProps:{movie},
+    });
+  }
+
   renderCell(model){
     return(
       <TouchableHighlight
         underlayColor="rgba(34,26,38,0.1)"
-        onPress ={() => {
-          console.log('<<' + model.title  + '>> 被点击了');
-        }}
+        onPress ={() => this.showMovieDetail(model)}
         >
             <View style={styles.CarCell}>
                 <View style={styles.ImageView}>
@@ -109,10 +118,8 @@ import  {
 
 
      return (
-       <View style={styles.backView}>
-         <Text style={styles.Title}>目的地</Text>
-
-         <ListView
+       <View style={styles.conatiner}>
+         <ListView style={styles.tableView}
          // showsVerticalScrollIndicator={false}
          dataSource={this.state.dataSource}
          renderRow={this.renderCell.bind(this)}
@@ -128,12 +135,15 @@ import  {
  const styles = StyleSheet.create({
    conatiner:{
     flex:1,
-    backgroundColor:'red',
    },
    backView:{
-     paddingTop:50,
-     flex:1,
+     // paddingTop:50,
+    flex:1,
     backgroundColor:'#F5FCF0',
+   },
+   tableView:{
+     marginTop:60,
+     marginBottom:49,
    },
    centering:{
      flex:1,
@@ -145,12 +155,6 @@ import  {
      textAlign: 'center',
      margin: 10,
      marginTop:150,
-   },
-   Title:{
-     textAlign:'center',
-     fontSize:20,
-     margin:10,
-     marginTop:20,
    },
    movieContent:{
      marginTop:10,

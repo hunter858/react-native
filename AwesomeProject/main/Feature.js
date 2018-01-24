@@ -38,8 +38,7 @@ export default class Feature extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:100,
-    height:100,
+    marginBottom:49,
     // justifyContent: 'center',
     // alignItems: 'center',
     // backgroundColor: '#F5FCFF',

@@ -45,7 +45,7 @@ const instructions = Platform.select({
 
 
 
-export default class Home extends Component {
+export default class Main extends Component {
   constructor(props) {
     super(props);
     // 初始状态
@@ -138,4 +138,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-module.exports  = Home;
+module.exports  = Main;

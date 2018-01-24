@@ -19,7 +19,7 @@ import {
 
 
 
-import Home from './main/Home.js';
+import Main from './main/Main.js';
 
 const ScreenWidth = Dimensions.get('window').width; //屏幕宽
 const ScreenHeight = Dimensions.get('window').height; //高
@@ -43,7 +43,7 @@ export default class App extends Component<{}> {
 
   render() {
     return (
-        <Home  style={styles.container}/>
+        <Main  style={styles.container}/>
     );
   }
 }
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     width:ScreenWidth,
     height:100,
     marginTop:20,
-    backgroundColor:'#F5FCF0',
+    // backgroundColor:'#F5FCF0',
   },
   scrollview:{
     flexDirection:'row',
